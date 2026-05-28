@@ -17,30 +17,29 @@ st.set_page_config(
 # CLASS LABELS ĐÚNG THỨ TỰ MODEL
 # =========================
 class_labels = [
-    "Trần Hải Yến",
-    "Nguyễn Phạm Hoàng An",
-    "Lê Quang Dũng",
-    "Nguyễn Việt Đức",
-    "Nguyễn Hoàng Quế Châu",
-    "Nguyễn Thị Ngọc Tuyết",
-    "Nguyễn Ngọc Bảo",
-    "Nguyễn Thị Khánh Lê",
-    "Đoàn Hùng",
-    "Đỗ An Phúc",
-    "Phạm Nguyễn Bảo Châu",
-    "Nguyễn Đặng Vinh Phúc",
-    "Vũ Quang Thái",
     "Hoàng Kỳ Anh",
-    "Đinh Hữu Khánh Anh",
-    "Phạm Gia Thành Duy",
+    "Lê Quang Dũng",
     "Lê Tuấn Thành",
-    "Ngô Quốc Trung",
-    "Nguyễn Tiến Mạnh",
     "Lương Ngọc Thuận",
+    "Ngô Quốc Trung",
+    "Nguyễn Ngọc Bảo",
+    "Nguyễn Hoàng Quế Châu",
+    "Nguyễn Phạm Hoàng An",
+    "Nguyễn Thị Khánh Lê",
+    "Nguyễn Thị Ngọc Tuyết",
+    "Nguyễn Tiến Mạnh",
+    "Nguyễn Việt Đức",
+    "Nguyễn Đặng Vinh Phúc",
+    "Phạm Gia Thành Duy",
+    "Phạm Hứa Nhật Minh",
+    "Phạm Nguyễn Bảo Châu",
     "Phạm Phú Hoà",
-    "Phạm Hứa Nhật Minh"
+    "Trần Hải Yến",
+    "Vũ Quang Thái",
+    "Đinh Hữu Khánh Anh",
+    "Đoàn Hùng",
+    "Đỗ An Phúc"
 ]
-
 # =========================
 # CSS GIAO DIỆN
 # =========================
