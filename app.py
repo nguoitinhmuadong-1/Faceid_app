@@ -14,32 +14,31 @@ st.set_page_config(
 )
 
 # =========================
-# CLASS LABELS
-# Lưu ý: thứ tự phải đúng với train_generator.class_indices lúc train
+# CLASS LABELS ĐÚNG THỨ TỰ MODEL
 # =========================
 class_labels = [
-    "Đinh Hữu Khánh Anh",
+    "Trần Hải Yến",
+    "Nguyễn Phạm Hoàng An",
+    "Lê Quang Dũng",
+    "Nguyễn Việt Đức",
+    "Nguyễn Hoàng Quế Châu",
+    "Nguyễn Thị Ngọc Tuyết",
+    "Nguyễn Ngọc Bảo",
+    "Nguyễn Thị Khánh Lê",
     "Đoàn Hùng",
     "Đỗ An Phúc",
-    "Hoàng Kỳ Anh",
-    "Lê Quang Dũng",
-    "Lê Tuấn Thành",
-    "Lương Ngọc Thuận",
-    "Ngô Quốc Trung",
-    "Nguyễn Ngọc Bảo",
-    "Nguyễn Đặng Vinh Phúc",
-    "Nguyễn Hoàng Quế Châu",
-    "Nguyễn Phạm Hoàng An",
-    "Nguyễn Thị Khánh Lê",
-    "Nguyễn Thị Ngọc Tuyết",
-    "Nguyễn Tiến Mạnh",
-    "Nguyễn Việt Đức",
-    "Phạm Gia Thành Duy",
-    "Phạm Hứa Nhật Minh",
     "Phạm Nguyễn Bảo Châu",
+    "Nguyễn Đặng Vinh Phúc",
+    "Vũ Quang Thái",
+    "Hoàng Kỳ Anh",
+    "Đinh Hữu Khánh Anh",
+    "Phạm Gia Thành Duy",
+    "Lê Tuấn Thành",
+    "Ngô Quốc Trung",
+    "Nguyễn Tiến Mạnh",
+    "Lương Ngọc Thuận",
     "Phạm Phú Hoà",
-    "Trần Hải Yến",
-    "Vũ Quang Thái"
+    "Phạm Hứa Nhật Minh"
 ]
 
 # =========================
@@ -189,7 +188,7 @@ st.markdown("""
     }
 
     .result-name {
-        font-size: 38px;
+        font-size: 35px;
         font-weight: 950;
         margin-bottom: 8px;
     }
@@ -228,122 +227,6 @@ st.markdown("""
         color: white;
     }
 
-    .scanner-box {
-        position: relative;
-        padding: 20px;
-        border-radius: 30px;
-        background: rgba(15, 23, 42, 0.88);
-        border: 1px solid rgba(34, 211, 238, 0.35);
-        box-shadow:
-            0 0 35px rgba(34, 211, 238, 0.22),
-            inset 0 0 28px rgba(34, 211, 238, 0.10);
-        overflow: hidden;
-        margin-bottom: 20px;
-    }
-
-    .scanner-title {
-        text-align: center;
-        font-size: 22px;
-        font-weight: 900;
-        color: #67e8f9;
-        margin-bottom: 12px;
-        letter-spacing: 2px;
-    }
-
-    .scanner-frame {
-        position: relative;
-        min-height: 320px;
-        border-radius: 24px;
-        overflow: hidden;
-        border: 2px solid rgba(34, 211, 238, 0.65);
-        box-shadow: 0 0 25px rgba(34, 211, 238, 0.25);
-        background:
-            linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
-            rgba(2, 6, 23, 0.55);
-        background-size: 28px 28px;
-    }
-
-    .scanner-line {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(90deg, transparent, #22d3ee, #a78bfa, transparent);
-        box-shadow: 0 0 22px #22d3ee;
-        animation: scanMove 2.2s linear infinite;
-        z-index: 10;
-    }
-
-    @keyframes scanMove {
-        0% {
-            top: 0%;
-            opacity: 0.25;
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
-            top: 100%;
-            opacity: 0.25;
-        }
-    }
-
-    .corner {
-        position: absolute;
-        width: 42px;
-        height: 42px;
-        border-color: #22d3ee;
-        z-index: 11;
-    }
-
-    .corner-tl {
-        top: 14px;
-        left: 14px;
-        border-top: 4px solid #22d3ee;
-        border-left: 4px solid #22d3ee;
-    }
-
-    .corner-tr {
-        top: 14px;
-        right: 14px;
-        border-top: 4px solid #22d3ee;
-        border-right: 4px solid #22d3ee;
-    }
-
-    .corner-bl {
-        bottom: 14px;
-        left: 14px;
-        border-bottom: 4px solid #22d3ee;
-        border-left: 4px solid #22d3ee;
-    }
-
-    .corner-br {
-        bottom: 14px;
-        right: 14px;
-        border-bottom: 4px solid #22d3ee;
-        border-right: 4px solid #22d3ee;
-    }
-
-    .scanner-status {
-        text-align: center;
-        margin-top: 12px;
-        font-size: 15px;
-        color: #cbd5e1;
-    }
-
-    .scanner-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: rgba(103, 232, 249, 0.7);
-        font-size: 76px;
-        font-weight: 900;
-        z-index: 3;
-    }
-
     .metric-row {
         padding: 14px 16px;
         border-radius: 16px;
@@ -356,14 +239,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # =========================
-# LOAD MODEL
+# LOAD MODEL MỚI
 # =========================
 @st.cache_resource
 def load_face_model():
-    model_path = "faceid.h5"
+    model_path = "faceid_app.h5"
 
     if not os.path.exists(model_path):
-        st.error("Không tìm thấy file faceid.h5. Anh hãy đặt file faceid.h5 cùng thư mục với app.py")
+        st.error("Không tìm thấy file faceid_app.h5. Anh hãy đặt file faceid_app.h5 cùng thư mục với app.py")
         return None
 
     model = tf.keras.models.load_model(model_path, compile=False)
@@ -498,7 +381,7 @@ elif page == "detect":
     if model is None:
         st.stop()
 
-    tab1, tab2 = st.tabs(["📁 Tải ảnh lên", "📸 Chụp bằng máy quét"])
+    tab1, tab2 = st.tabs(["📁 Tải ảnh lên", "📸 Chụp bằng camera"])
 
     image = None
 
@@ -519,23 +402,12 @@ elif page == "detect":
 
     with tab2:
         st.markdown("""
-        <div class="scanner-box">
-            <div class="scanner-title">FACE SCANNER READY</div>
-            <div class="scanner-frame">
-                <div class="scanner-line"></div>
-                <div class="corner corner-tl"></div>
-                <div class="corner corner-tr"></div>
-                <div class="corner corner-bl"></div>
-                <div class="corner corner-br"></div>
-                <div class="scanner-icon">⌖</div>
-            </div>
-            <div class="scanner-status">
-                Căn khuôn mặt vào giữa khung, giữ đủ sáng rồi bấm chụp ảnh
-            </div>
+        <div class="guide-box">
+            Chụp ảnh khuôn mặt trực tiếp bằng camera. Anh nên căn mặt ở giữa khung, đủ sáng và không bị che mặt.
         </div>
         """, unsafe_allow_html=True)
 
-        camera_file = st.camera_input("📸 Mở camera và chụp khuôn mặt")
+        camera_file = st.camera_input("📸 Chụp ảnh khuôn mặt")
 
         if camera_file is not None:
             image = Image.open(camera_file)
@@ -545,25 +417,7 @@ elif page == "detect":
 
         with col_img:
             st.markdown('<div class="card">', unsafe_allow_html=True)
-            st.subheader("Ảnh đang quét")
-
-            st.markdown("""
-            <div class="scanner-box">
-                <div class="scanner-title">SCANNING FACE</div>
-                <div class="scanner-frame">
-                    <div class="scanner-line"></div>
-                    <div class="corner corner-tl"></div>
-                    <div class="corner corner-tr"></div>
-                    <div class="corner corner-bl"></div>
-                    <div class="corner corner-br"></div>
-                    <div class="scanner-icon">AI</div>
-                </div>
-                <div class="scanner-status">
-                    Đang phân tích đặc trưng khuôn mặt bằng mô hình CNN
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
+            st.subheader("Ảnh đầu vào")
             st.image(image, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
@@ -576,7 +430,7 @@ elif page == "detect":
 
                 st.markdown(f"""
                 <div class="result-box">
-                    <div class="result-name">👤 {predicted_name}</div>
+                    <div class="result-name">Đây là sinh viên: 👤 {predicted_name}</div>
                     <div class="result-score">Độ tin cậy: {confidence:.2f}%</div>
                 </div>
                 """, unsafe_allow_html=True)
