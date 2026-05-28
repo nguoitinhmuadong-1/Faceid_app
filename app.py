@@ -8,38 +8,38 @@ import os
 # CẤU HÌNH APP
 # =========================
 st.set_page_config(
-    page_title="ide.face",
+    page_title="IDeFace",
     page_icon="🧬",
     layout="wide"
 )
 
 # =========================
 # CLASS LABELS
-# Anh sửa đúng theo thứ tự lúc train
+# Lưu ý: thứ tự phải đúng với train_generator.class_indices lúc train
 # =========================
 class_labels = [
-    "HoangKyAnh",
-    "Lê Quang Dũng",
-    "Lê Tuấn Thành",
-    "Lương Ngọc Thuận",
-    "Ngô Quốc Trung",
+    "Đinh Hữu Khánh Anh",
+    "Đoàn Hùng",
+    "Đỗ An Phúc",
+    "Hoàng Kỳ Anh",
+    "Lê Quang Dũng",
+    "Lê Tuấn Thành",
+    "Lương Ngọc Thuận",
+    "Ngô Quốc Trung",
     "Nguyễn Ngọc Bảo",
-    "Nguyễn Hoàng Quế Châu",
-    "Nguyễn Phạm Hoàng Anh",
-    "Nguyễn Thành Đạt",
-    "Nguyễn Trọng Nghĩa",
-    "Nguyễn Văn A",
-    "Nguyễn Văn B",
-    "Phạm Hoàng Nam",
-    "Phạm Minh Đức",
-    "Trần Anh Khoa",
-    "Trần Bảo Long",
-    "Trần Đức Huy",
-    "Trần Minh Nhật",
-    "Võ Hoàng Phúc",
-    "Võ Minh Quân",
-    "Vũ Hoàng Long",
-    "Đặng Quốc Bảo"
+    "Nguyễn Đặng Vinh Phúc",
+    "Nguyễn Hoàng Quế Châu",
+    "Nguyễn Phạm Hoàng An",
+    "Nguyễn Thị Khánh Lê",
+    "Nguyễn Thị Ngọc Tuyết",
+    "Nguyễn Tiến Mạnh",
+    "Nguyễn Việt Đức",
+    "Phạm Gia Thành Duy",
+    "Phạm Hứa Nhật Minh",
+    "Phạm Nguyễn Bảo Châu",
+    "Phạm Phú Hoà",
+    "Trần Hải Yến",
+    "Vũ Quang Thái"
 ]
 
 # =========================
@@ -83,11 +83,11 @@ st.markdown("""
         border: 1px solid rgba(255,255,255,0.12);
         backdrop-filter: blur(16px);
         box-shadow: 0 12px 35px rgba(0,0,0,0.35);
-        margin-bottom: 35px;
+        margin-bottom: 25px;
     }
 
     .brand {
-        font-size: 30px;
+        font-size: 32px;
         font-weight: 950;
         letter-spacing: -1px;
         background: linear-gradient(90deg, #22d3ee, #a78bfa, #facc15);
@@ -127,7 +127,7 @@ st.markdown("""
         font-size: 21px;
         line-height: 1.7;
         color: #dbeafe;
-        max-width: 780px;
+        max-width: 820px;
     }
 
     .tag {
@@ -166,6 +166,17 @@ st.markdown("""
         line-height: 1.65;
     }
 
+    .guide-box {
+        padding: 24px;
+        border-radius: 24px;
+        background: rgba(250, 204, 21, 0.10);
+        border: 1px solid rgba(250, 204, 21, 0.35);
+        color: #fef9c3;
+        font-size: 17px;
+        line-height: 1.65;
+        margin-bottom: 20px;
+    }
+
     .result-box {
         padding: 34px;
         border-radius: 28px;
@@ -174,6 +185,7 @@ st.markdown("""
         color: white;
         box-shadow: 0 18px 50px rgba(0,0,0,0.35);
         margin-top: 15px;
+        margin-bottom: 20px;
     }
 
     .result-name {
@@ -185,16 +197,6 @@ st.markdown("""
     .result-score {
         font-size: 24px;
         font-weight: 800;
-    }
-
-    .guide-box {
-        padding: 24px;
-        border-radius: 24px;
-        background: rgba(250, 204, 21, 0.10);
-        border: 1px solid rgba(250, 204, 21, 0.35);
-        color: #fef9c3;
-        font-size: 17px;
-        line-height: 1.65;
     }
 
     .stButton>button {
@@ -224,6 +226,131 @@ st.markdown("""
 
     h1, h2, h3, p, label, span {
         color: white;
+    }
+
+    .scanner-box {
+        position: relative;
+        padding: 20px;
+        border-radius: 30px;
+        background: rgba(15, 23, 42, 0.88);
+        border: 1px solid rgba(34, 211, 238, 0.35);
+        box-shadow:
+            0 0 35px rgba(34, 211, 238, 0.22),
+            inset 0 0 28px rgba(34, 211, 238, 0.10);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .scanner-title {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 900;
+        color: #67e8f9;
+        margin-bottom: 12px;
+        letter-spacing: 2px;
+    }
+
+    .scanner-frame {
+        position: relative;
+        min-height: 320px;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 2px solid rgba(34, 211, 238, 0.65);
+        box-shadow: 0 0 25px rgba(34, 211, 238, 0.25);
+        background:
+            linear-gradient(rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(34, 211, 238, 0.06) 1px, transparent 1px),
+            rgba(2, 6, 23, 0.55);
+        background-size: 28px 28px;
+    }
+
+    .scanner-line {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, transparent, #22d3ee, #a78bfa, transparent);
+        box-shadow: 0 0 22px #22d3ee;
+        animation: scanMove 2.2s linear infinite;
+        z-index: 10;
+    }
+
+    @keyframes scanMove {
+        0% {
+            top: 0%;
+            opacity: 0.25;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            top: 100%;
+            opacity: 0.25;
+        }
+    }
+
+    .corner {
+        position: absolute;
+        width: 42px;
+        height: 42px;
+        border-color: #22d3ee;
+        z-index: 11;
+    }
+
+    .corner-tl {
+        top: 14px;
+        left: 14px;
+        border-top: 4px solid #22d3ee;
+        border-left: 4px solid #22d3ee;
+    }
+
+    .corner-tr {
+        top: 14px;
+        right: 14px;
+        border-top: 4px solid #22d3ee;
+        border-right: 4px solid #22d3ee;
+    }
+
+    .corner-bl {
+        bottom: 14px;
+        left: 14px;
+        border-bottom: 4px solid #22d3ee;
+        border-left: 4px solid #22d3ee;
+    }
+
+    .corner-br {
+        bottom: 14px;
+        right: 14px;
+        border-bottom: 4px solid #22d3ee;
+        border-right: 4px solid #22d3ee;
+    }
+
+    .scanner-status {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 15px;
+        color: #cbd5e1;
+    }
+
+    .scanner-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgba(103, 232, 249, 0.7);
+        font-size: 76px;
+        font-weight: 900;
+        z-index: 3;
+    }
+
+    .metric-row {
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.10);
+        margin-bottom: 10px;
+        color: #e2e8f0;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -255,6 +382,9 @@ def preprocess_image(image):
     img_array = np.expand_dims(img_array, axis=0)
     return img_array
 
+# =========================
+# DỰ ĐOÁN
+# =========================
 def predict_face(image):
     img_array = preprocess_image(image)
 
@@ -277,7 +407,7 @@ if "page" not in st.session_state:
 
 st.markdown("""
 <div class="navbar">
-    <div class="brand">ide.face</div>
+    <div class="brand">IDeFace</div>
     <div class="brand-sub">AI Face Recognition System</div>
 </div>
 """, unsafe_allow_html=True)
@@ -305,7 +435,7 @@ if page == "home":
     st.markdown("""
     <div class="hero">
         <div class="tag">AI Face Recognition • CNN Model • Student Identity</div>
-        <div class="hero-title">ide.face</div>
+        <div class="hero-title">IDeFace</div>
         <div class="hero-desc">
             Ứng dụng nhận diện khuôn mặt sinh viên lớp Logtech bán phần bằng mô hình trí tuệ nhân tạo.
             Hệ thống cho phép tải ảnh hoặc chụp trực tiếp từ camera để dự đoán danh tính sinh viên.
@@ -338,9 +468,9 @@ if page == "home":
     with col3:
         st.markdown("""
         <div class="card">
-            <div class="card-title">⚡ Giao diện nhanh gọn</div>
+            <div class="card-title">⚡ Giao diện hiện đại</div>
             <div class="card-text">
-                Thiết kế tối giản, hiện đại, dễ sử dụng và phù hợp để trình bày trong đồ án hoặc báo cáo.
+                Thiết kế tối giản, màu sắc hiện đại, dễ sử dụng và phù hợp để trình bày trong đồ án.
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -360,7 +490,7 @@ elif page == "detect":
         <div class="tag">Recognition Mode</div>
         <div class="hero-title">Nhận dạng khuôn mặt</div>
         <div class="hero-desc">
-            Chọn ảnh từ thiết bị hoặc chụp ảnh trực tiếp để hệ thống ide.face tiến hành nhận diện.
+            Chọn ảnh từ thiết bị hoặc chụp ảnh trực tiếp. Hệ thống IDeFace sẽ xử lý và dự đoán danh tính sinh viên.
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -368,11 +498,17 @@ elif page == "detect":
     if model is None:
         st.stop()
 
-    tab1, tab2 = st.tabs(["📁 Tải ảnh lên", "📸 Chụp bằng camera"])
+    tab1, tab2 = st.tabs(["📁 Tải ảnh lên", "📸 Chụp bằng máy quét"])
 
     image = None
 
     with tab1:
+        st.markdown("""
+        <div class="guide-box">
+            Tải lên ảnh khuôn mặt rõ nét. Ảnh nên có ánh sáng tốt và khuôn mặt nằm gần trung tâm.
+        </div>
+        """, unsafe_allow_html=True)
+
         uploaded_file = st.file_uploader(
             "Chọn ảnh khuôn mặt",
             type=["jpg", "jpeg", "png"]
@@ -382,7 +518,24 @@ elif page == "detect":
             image = Image.open(uploaded_file)
 
     with tab2:
-        camera_file = st.camera_input("Chụp ảnh khuôn mặt")
+        st.markdown("""
+        <div class="scanner-box">
+            <div class="scanner-title">FACE SCANNER READY</div>
+            <div class="scanner-frame">
+                <div class="scanner-line"></div>
+                <div class="corner corner-tl"></div>
+                <div class="corner corner-tr"></div>
+                <div class="corner corner-bl"></div>
+                <div class="corner corner-br"></div>
+                <div class="scanner-icon">⌖</div>
+            </div>
+            <div class="scanner-status">
+                Căn khuôn mặt vào giữa khung, giữ đủ sáng rồi bấm chụp ảnh
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        camera_file = st.camera_input("📸 Mở camera và chụp khuôn mặt")
 
         if camera_file is not None:
             image = Image.open(camera_file)
@@ -392,7 +545,25 @@ elif page == "detect":
 
         with col_img:
             st.markdown('<div class="card">', unsafe_allow_html=True)
-            st.subheader("Ảnh đầu vào")
+            st.subheader("Ảnh đang quét")
+
+            st.markdown("""
+            <div class="scanner-box">
+                <div class="scanner-title">SCANNING FACE</div>
+                <div class="scanner-frame">
+                    <div class="scanner-line"></div>
+                    <div class="corner corner-tl"></div>
+                    <div class="corner corner-tr"></div>
+                    <div class="corner corner-bl"></div>
+                    <div class="corner corner-br"></div>
+                    <div class="scanner-icon">AI</div>
+                </div>
+                <div class="scanner-status">
+                    Đang phân tích đặc trưng khuôn mặt bằng mô hình CNN
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
             st.image(image, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
@@ -419,7 +590,17 @@ elif page == "detect":
 
                 for idx in top_indices:
                     if idx < len(class_labels):
-                        st.write(f"**{class_labels[idx]}**: {all_predictions[idx] * 100:.2f}%")
+                        st.markdown(
+                            f"""
+                            <div class="metric-row">
+                                <b>{class_labels[idx]}</b>: {all_predictions[idx] * 100:.2f}%
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+
+            else:
+                st.info("Bấm nút **Bắt đầu nhận diện** để hệ thống dự đoán.")
 
             st.markdown('</div>', unsafe_allow_html=True)
 
@@ -436,10 +617,10 @@ elif page == "detect":
 elif page == "about":
     st.markdown("""
     <div class="hero">
-        <div class="tag">About ide.face</div>
+        <div class="tag">About IDeFace</div>
         <div class="hero-title">Giới thiệu ứng dụng</div>
         <div class="hero-desc">
-            ide.face là ứng dụng AI nhận diện khuôn mặt được xây dựng phục vụ học tập và nghiên cứu.
+            IDeFace là ứng dụng AI nhận diện khuôn mặt được xây dựng phục vụ học tập và nghiên cứu.
             Ứng dụng minh họa quá trình đưa mô hình CNN đã huấn luyện vào một hệ thống web đơn giản,
             trực quan và dễ sử dụng.
         </div>
@@ -468,3 +649,13 @@ elif page == "about":
             </div>
         </div>
         """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="card">
+        <div class="card-title">⚠️ Lưu ý</div>
+        <div class="card-text">
+            Kết quả nhận diện phụ thuộc vào chất lượng ảnh, ánh sáng, góc chụp và dữ liệu đã dùng để huấn luyện.
+            Ứng dụng phù hợp cho mục đích học tập, thử nghiệm và trình bày đồ án.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
