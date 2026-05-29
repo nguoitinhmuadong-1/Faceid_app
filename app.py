@@ -14,7 +14,7 @@ st.set_page_config(
 )
 
 # =========================
-# CLASS LABELS ĐÚNG THỨ TỰ MODEL
+# CLASS LABELS ĐÚNG THỨ TỰ FOLDER TRAIN
 # =========================
 class_labels = [
     "Hoàng Kỳ Anh",
@@ -40,6 +40,7 @@ class_labels = [
     "Đoàn Hùng",
     "Đỗ An Phúc"
 ]
+
 # =========================
 # CSS GIAO DIỆN
 # =========================
@@ -234,11 +235,99 @@ st.markdown("""
         margin-bottom: 10px;
         color: #e2e8f0;
     }
+
+    .mini-card {
+        padding: 20px;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.075);
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+        min-height: 120px;
+        text-align: center;
+        margin-bottom: 18px;
+    }
+
+    .mini-number {
+        font-size: 34px;
+        font-weight: 950;
+        background: linear-gradient(90deg, #22d3ee, #c4b5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 6px;
+    }
+
+    .mini-label {
+        font-size: 15px;
+        color: #cbd5e1;
+        font-weight: 650;
+    }
+
+    .section-title {
+        font-size: 34px;
+        font-weight: 950;
+        margin: 30px 0 18px 0;
+        color: white;
+    }
+
+    .step-box {
+        padding: 24px;
+        border-radius: 24px;
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid rgba(34, 211, 238, 0.20);
+        box-shadow: 0 12px 34px rgba(0,0,0,0.25);
+        min-height: 170px;
+        margin-bottom: 20px;
+    }
+
+    .step-number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 950;
+        color: white;
+        margin-bottom: 14px;
+    }
+
+    .empty-preview {
+        padding: 40px;
+        border-radius: 28px;
+        background:
+            linear-gradient(135deg, rgba(34,211,238,0.10), rgba(168,85,247,0.10)),
+            rgba(255,255,255,0.06);
+        border: 1px dashed rgba(255,255,255,0.25);
+        text-align: center;
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #cbd5e1;
+    }
+
+    .empty-icon {
+        font-size: 70px;
+        margin-bottom: 18px;
+    }
+
+    .footer-box {
+        margin-top: 35px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 22px;
+        background: rgba(255,255,255,0.055);
+        border: 1px solid rgba(255,255,255,0.10);
+        color: #94a3b8;
+        font-size: 15px;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # =========================
-# LOAD MODEL MỚI
+# LOAD MODEL
 # =========================
 @st.cache_resource
 def load_face_model():
@@ -282,7 +371,7 @@ def predict_face(image):
     return predicted_name, confidence, predictions[0]
 
 # =========================
-# ĐIỀU HƯỚNG KHÔNG SIDEBAR
+# ĐIỀU HƯỚNG
 # =========================
 if "page" not in st.session_state:
     st.session_state.page = "home"
@@ -314,16 +403,70 @@ page = st.session_state.page
 # TRANG HOME
 # =========================
 if page == "home":
-    st.markdown("""
-    <div class="hero">
-        <div class="tag">AI Face Recognition • CNN Model • Student Identity</div>
-        <div class="hero-title">IDeFace</div>
-        <div class="hero-desc">
-            Ứng dụng nhận diện khuôn mặt sinh viên lớp Logtech bán phần bằng mô hình trí tuệ nhân tạo.
-            Hệ thống cho phép tải ảnh hoặc chụp trực tiếp từ camera để dự đoán danh tính sinh viên.
+    left, right = st.columns([1.4, 1])
+
+    with left:
+        st.markdown("""
+        <div class="hero">
+            <div class="tag">AI Face Recognition • CNN Model • Student Identity</div>
+            <div class="hero-title">IDeFace</div>
+            <div class="hero-desc">
+                Ứng dụng nhận diện khuôn mặt sinh viên lớp Logtech bán phần bằng mô hình trí tuệ nhân tạo.
+                Hệ thống cho phép tải ảnh hoặc chụp trực tiếp từ camera để dự đoán danh tính sinh viên.
+            </div>
         </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+
+    with right:
+        st.markdown("""
+        <div class="card" style="min-height: 335px;">
+            <div class="card-title">🚀 Tổng quan hệ thống</div>
+            <div class="card-text">
+                IDeFace được xây dựng nhằm mô phỏng một hệ thống nhận dạng khuôn mặt đơn giản,
+                trực quan và dễ sử dụng. Ứng dụng sử dụng mô hình CNN đã huấn luyện để phân loại
+                khuôn mặt theo danh sách sinh viên có trong dataset.
+                <br><br>
+                Người dùng chỉ cần đưa ảnh vào hệ thống, sau đó AI sẽ xử lý ảnh và hiển thị
+                sinh viên được dự đoán cùng độ tin cậy.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    m1, m2, m3, m4 = st.columns(4)
+
+    with m1:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">22</div>
+            <div class="mini-label">Sinh viên</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with m2:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">200×200</div>
+            <div class="mini-label">Kích thước ảnh đầu vào</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with m3:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">CNN</div>
+            <div class="mini-label">Mô hình nhận diện</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with m4:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">2</div>
+            <div class="mini-label">Upload ảnh & Camera</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown('<div class="section-title">Tính năng chính</div>', unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
 
@@ -357,9 +500,52 @@ if page == "home":
         </div>
         """, unsafe_allow_html=True)
 
+    st.markdown('<div class="section-title">Quy trình hoạt động</div>', unsafe_allow_html=True)
+
+    s1, s2, s3 = st.columns(3)
+
+    with s1:
+        st.markdown("""
+        <div class="step-box">
+            <div class="step-number">1</div>
+            <div class="card-title">Chọn ảnh</div>
+            <div class="card-text">
+                Người dùng tải ảnh khuôn mặt hoặc chụp ảnh trực tiếp bằng camera.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with s2:
+        st.markdown("""
+        <div class="step-box">
+            <div class="step-number">2</div>
+            <div class="card-title">Xử lý ảnh</div>
+            <div class="card-text">
+                Ảnh được resize về 200x200, chuẩn hóa pixel và đưa vào mô hình CNN.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with s3:
+        st.markdown("""
+        <div class="step-box">
+            <div class="step-number">3</div>
+            <div class="card-title">Trả kết quả</div>
+            <div class="card-text">
+                Hệ thống hiển thị tên sinh viên được dự đoán cùng độ tin cậy.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
     st.markdown("""
     <div class="guide-box">
         <b>Gợi ý sử dụng:</b> Ảnh đầu vào nên rõ khuôn mặt, đủ sáng, không bị che mặt và nên chụp chính diện để tăng độ chính xác.
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="footer-box">
+        IDeFace • AI Face Recognition System • Built with Python, TensorFlow/Keras and Streamlit
     </div>
     """, unsafe_allow_html=True)
 
@@ -458,11 +644,32 @@ elif page == "detect":
             st.markdown('</div>', unsafe_allow_html=True)
 
     else:
-        st.markdown("""
-        <div class="guide-box">
-            Anh hãy tải ảnh lên hoặc chụp ảnh trực tiếp. Sau đó bấm nút <b>Bắt đầu nhận diện</b> để xem kết quả.
-        </div>
-        """, unsafe_allow_html=True)
+        c1, c2 = st.columns([1, 1])
+
+        with c1:
+            st.markdown("""
+            <div class="empty-preview">
+                <div class="empty-icon">🖼️</div>
+                <div class="card-title">Chưa có ảnh đầu vào</div>
+                <div class="card-text">
+                    Anh hãy tải ảnh khuôn mặt lên hoặc chụp ảnh trực tiếp bằng camera để bắt đầu nhận diện.
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+        with c2:
+            st.markdown("""
+            <div class="card" style="min-height: 280px;">
+                <div class="card-title">📌 Mẹo để nhận diện tốt hơn</div>
+                <div class="card-text">
+                    • Chụp ảnh rõ mặt, không bị mờ.<br>
+                    • Khuôn mặt nên nằm ở giữa ảnh.<br>
+                    • Tránh ảnh quá tối hoặc ngược sáng.<br>
+                    • Không che mặt bằng khẩu trang, tay hoặc vật khác.<br>
+                    • Nên dùng ảnh chính diện để độ chính xác cao hơn.
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
 
 # =========================
 # TRANG ABOUT
@@ -480,9 +687,9 @@ elif page == "about":
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns(2)
+    a1, a2, a3 = st.columns(3)
 
-    with col1:
+    with a1:
         st.markdown("""
         <div class="card">
             <div class="card-title">🎯 Mục tiêu</div>
@@ -493,13 +700,59 @@ elif page == "about":
         </div>
         """, unsafe_allow_html=True)
 
-    with col2:
+    with a2:
         st.markdown("""
         <div class="card">
-            <div class="card-title">🧩 Công nghệ sử dụng</div>
+            <div class="card-title">🧩 Công nghệ</div>
             <div class="card-text">
                 Python, TensorFlow/Keras, mô hình CNN, thư viện PIL, NumPy và Streamlit để xây dựng giao diện web.
             </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with a3:
+        st.markdown("""
+        <div class="card">
+            <div class="card-title">📊 Dữ liệu</div>
+            <div class="card-text">
+                Dataset gồm ảnh khuôn mặt của 22 sinh viên, được chia thành tập huấn luyện và tập kiểm tra.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown('<div class="section-title">Thông tin hệ thống</div>', unsafe_allow_html=True)
+
+    b1, b2, b3, b4 = st.columns(4)
+
+    with b1:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">22</div>
+            <div class="mini-label">Lớp nhận diện</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with b2:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">200×200</div>
+            <div class="mini-label">Input model</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with b3:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">H5</div>
+            <div class="mini-label">Định dạng model</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with b4:
+        st.markdown("""
+        <div class="mini-card">
+            <div class="mini-number">Web</div>
+            <div class="mini-label">Giao diện Streamlit</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -510,5 +763,11 @@ elif page == "about":
             Kết quả nhận diện phụ thuộc vào chất lượng ảnh, ánh sáng, góc chụp và dữ liệu đã dùng để huấn luyện.
             Ứng dụng phù hợp cho mục đích học tập, thử nghiệm và trình bày đồ án.
         </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="footer-box">
+        IDeFace • Student Face Recognition App • Developed for AI learning project
     </div>
     """, unsafe_allow_html=True)
