@@ -223,7 +223,6 @@ st.markdown("""
         border: 1px solid rgba(255,255,255,0.10);
     }
 
-    /* Fix chữ bị trùng nền trong upload file */
     [data-testid="stFileUploader"] label {
         color: white !important;
     }
@@ -350,40 +349,40 @@ st.markdown("""
     }
 
     /* =========================
-       CHATBOT DỄ THƯƠNG
+       CHATBOT DỄ THƯƠNG - DẠNG NÚT HỎI ĐÁP
     ========================= */
     .cute-bot-card {
-        padding: 30px;
-        border-radius: 32px;
+        padding: 28px;
+        border-radius: 30px;
         background:
             radial-gradient(circle at top left, rgba(34,211,238,0.18), transparent 35%),
             linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
         border: 1px solid rgba(255,255,255,0.16);
-        box-shadow: 0 18px 50px rgba(0,0,0,0.30);
-        min-height: 520px;
+        box-shadow: 0 16px 42px rgba(0,0,0,0.28);
         text-align: center;
+        margin-bottom: 20px;
     }
 
     .cute-bot-avatar {
-        width: 145px;
-        height: 145px;
-        margin: 0 auto 18px auto;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 16px auto;
         border-radius: 50%;
         background:
             radial-gradient(circle at 35% 30%, #ffffff, #93c5fd 35%, #8b5cf6 100%);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 72px;
+        font-size: 62px;
         box-shadow:
-            0 0 35px rgba(34,211,238,0.35),
-            0 16px 35px rgba(0,0,0,0.28);
+            0 0 30px rgba(34,211,238,0.35),
+            0 14px 30px rgba(0,0,0,0.25);
         animation: floatBot 3s ease-in-out infinite;
     }
 
     @keyframes floatBot {
         0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-8px); }
         100% { transform: translateY(0px); }
     }
 
@@ -393,105 +392,80 @@ st.markdown("""
         background: linear-gradient(90deg, #67e8f9, #c4b5fd, #facc15);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .cute-bot-desc {
         font-size: 17px;
-        line-height: 1.7;
+        line-height: 1.6;
         color: #dbeafe;
-        margin-bottom: 22px;
     }
 
-    .cute-suggestion {
-        padding: 13px 16px;
-        border-radius: 18px;
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.12);
-        color: #e2e8f0;
-        margin-bottom: 10px;
-        text-align: left;
-        font-size: 15px;
-    }
-
-    .chat-panel {
-        padding: 24px;
-        border-radius: 32px;
+    .qa-panel {
+        padding: 26px;
+        border-radius: 30px;
         background: rgba(15, 23, 42, 0.72);
         border: 1px solid rgba(255,255,255,0.14);
-        box-shadow: 0 18px 50px rgba(0,0,0,0.30);
-        min-height: 520px;
+        box-shadow: 0 16px 42px rgba(0,0,0,0.28);
+        margin-bottom: 20px;
     }
 
-    .chat-header {
-        padding: 16px 18px;
-        border-radius: 22px;
-        background: linear-gradient(135deg, rgba(6,182,212,0.25), rgba(139,92,246,0.25));
+    .qa-title {
+        font-size: 30px;
+        font-weight: 950;
+        color: white;
+        margin-bottom: 8px;
+    }
+
+    .qa-subtitle {
+        font-size: 16px;
+        color: #cbd5e1;
+        margin-bottom: 8px;
+    }
+
+    .answer-box {
+        padding: 26px;
+        border-radius: 26px;
+        background:
+            linear-gradient(135deg, rgba(6,182,212,0.20), rgba(139,92,246,0.20)),
+            rgba(255,255,255,0.08);
         border: 1px solid rgba(255,255,255,0.14);
-        margin-bottom: 18px;
+        box-shadow: 0 12px 34px rgba(0,0,0,0.24);
+        margin-top: 20px;
     }
 
-    .chat-header-title {
-        font-size: 23px;
+    .answer-title {
+        font-size: 24px;
+        font-weight: 950;
+        color: #67e8f9;
+        margin-bottom: 12px;
+    }
+
+    .answer-text {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #e2e8f0;
+    }
+
+    .question-grid-card {
+        padding: 20px;
+        border-radius: 24px;
+        background: rgba(255,255,255,0.065);
+        border: 1px solid rgba(255,255,255,0.12);
+        margin-bottom: 15px;
+    }
+
+    .question-grid-title {
+        font-size: 20px;
         font-weight: 900;
         color: white;
+        margin-bottom: 8px;
     }
 
-    .chat-header-sub {
-        font-size: 14px;
-        color: #cbd5e1;
-        margin-top: 4px;
-    }
-
-    .chat-window {
-        padding: 18px;
-        border-radius: 24px;
-        background: rgba(255,255,255,0.055);
-        border: 1px solid rgba(255,255,255,0.10);
-        min-height: 330px;
-        max-height: 430px;
-        overflow-y: auto;
-        margin-bottom: 18px;
-    }
-
-    .user-bubble {
-        background: linear-gradient(135deg, #06b6d4, #2563eb);
-        color: white;
-        padding: 14px 17px;
-        border-radius: 20px 20px 4px 20px;
-        margin: 12px 0 12px auto;
-        max-width: 78%;
-        font-size: 16px;
-        line-height: 1.55;
-        box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-    }
-
-    .bot-bubble {
-        background: rgba(255,255,255,0.10);
-        color: #e2e8f0;
-        padding: 14px 17px;
-        border-radius: 20px 20px 20px 4px;
-        margin: 12px auto 12px 0;
-        max-width: 78%;
-        font-size: 16px;
-        line-height: 1.55;
-        border: 1px solid rgba(255,255,255,0.12);
-        box-shadow: 0 8px 22px rgba(0,0,0,0.14);
-    }
-
-    .bot-bubble strong {
-        color: #67e8f9;
-    }
-
-    .cute-note {
-        padding: 16px;
-        border-radius: 20px;
-        background: rgba(250,204,21,0.10);
-        border: 1px solid rgba(250,204,21,0.25);
-        color: #fef9c3;
+    .question-grid-text {
         font-size: 15px;
-        line-height: 1.6;
-        text-align: left;
+        color: #cbd5e1;
+        line-height: 1.55;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -541,37 +515,37 @@ def predict_face(image):
     return predicted_name, confidence, predictions[0]
 
 # =========================
-# CHATBOT RULE-BASED
+# CÂU TRẢ LỜI CHATBOT MẶC ĐỊNH
 # =========================
-def chatbot_reply(user_message):
-    msg = user_message.lower()
+def get_default_answer(question_key):
+    answers = {
+        "use_app": {
+            "title": "Cách dùng app",
+            "text": "Anh vào trang Nhận dạng, chọn Tải ảnh lên hoặc Chụp bằng camera. Sau đó bấm nút Bắt đầu nhận diện để hệ thống dự đoán sinh viên."
+        },
+        "good_image": {
+            "title": "Ảnh như thế nào thì nhận diện tốt?",
+            "text": "Ảnh nên rõ khuôn mặt, đủ sáng, không bị mờ, khuôn mặt nằm gần trung tâm và không bị che bởi khẩu trang, tay hoặc vật khác."
+        },
+        "cnn_model": {
+            "title": "Model CNN là gì?",
+            "text": "CNN là mô hình học sâu thường dùng cho xử lý ảnh. Trong app này, CNN học đặc trưng khuôn mặt từ dataset sinh viên rồi dự đoán ảnh mới thuộc về ai."
+        },
+        "confidence": {
+            "title": "Độ tin cậy là gì?",
+            "text": "Độ tin cậy là xác suất cao nhất mà model đưa ra cho kết quả dự đoán. Ví dụ 95% nghĩa là model khá chắc chắn ảnh đó thuộc về sinh viên được dự đoán."
+        },
+        "wrong_result": {
+            "title": "Vì sao app nhận diện sai?",
+            "text": "App có thể nhận diện sai nếu ảnh quá tối, mờ, lệch góc, che mặt hoặc dữ liệu train chưa đủ đa dạng. Ngoài ra, class_labels phải đúng thứ tự folder train."
+        },
+        "student_count": {
+            "title": "App nhận diện bao nhiêu sinh viên?",
+            "text": "Hiện tại hệ thống đang nhận diện 22 sinh viên trong dataset đã được huấn luyện."
+        }
+    }
 
-    if "chào" in msg or "hello" in msg or "hi" in msg:
-        return "Xin chào anh! Em là IDeBot 🤖. Em có thể hướng dẫn anh cách dùng app nhận diện khuôn mặt."
-
-    elif "cách dùng" in msg or "sử dụng" in msg or "dùng" in msg:
-        return "Anh vào trang **Nhận dạng**, chọn **Tải ảnh lên** hoặc **Chụp bằng camera**, sau đó bấm **Bắt đầu nhận diện** để xem kết quả."
-
-    elif "ảnh" in msg or "chụp" in msg or "camera" in msg:
-        return "Ảnh nên rõ mặt, đủ sáng, khuôn mặt nằm ở giữa ảnh, không bị che bởi khẩu trang, tay hoặc vật khác."
-
-    elif "model" in msg or "cnn" in msg:
-        return "Ứng dụng IDeFace sử dụng mô hình **CNN** đã được huấn luyện từ ảnh khuôn mặt của 22 sinh viên."
-
-    elif "độ tin cậy" in msg or "confidence" in msg:
-        return "Độ tin cậy là xác suất cao nhất mà model dự đoán cho một sinh viên. Ví dụ 95% nghĩa là model khá chắc chắn với kết quả đó."
-
-    elif "sai" in msg or "nhầm" in msg or "không đúng" in msg:
-        return "Nếu nhận diện sai, anh nên thử ảnh chính diện hơn, đủ sáng hơn. Ngoài ra cần kiểm tra `class_labels` có đúng thứ tự với folder train không."
-
-    elif "bao nhiêu" in msg or "sinh viên" in msg:
-        return "Hiện tại app đang nhận diện **22 sinh viên** trong dataset đã huấn luyện."
-
-    elif "tên app" in msg or "ideface" in msg:
-        return "Tên app là **IDeFace** — ứng dụng nhận diện khuôn mặt sinh viên bằng trí tuệ nhân tạo."
-
-    else:
-        return "Em có thể hỗ trợ các nội dung như: cách dùng app, cách chụp ảnh tốt hơn, giải thích model CNN, độ tin cậy và lỗi nhận diện sai."
+    return answers.get(question_key, answers["use_app"])
 
 # =========================
 # ĐIỀU HƯỚNG
@@ -887,12 +861,15 @@ elif page == "chatbot":
         <div class="tag">Cute AI Assistant</div>
         <div class="hero-title">IDeBot</div>
         <div class="hero-desc">
-            Trợ lý chatbot dễ thương hỗ trợ người dùng trong quá trình sử dụng ứng dụng IDeFace.
+            Trợ lý dễ thương hỗ trợ người dùng sử dụng ứng dụng IDeFace thông qua các câu hỏi nhanh.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    left, right = st.columns([1, 1.45])
+    if "selected_question" not in st.session_state:
+        st.session_state.selected_question = "use_app"
+
+    left, right = st.columns([1, 1.55])
 
     with left:
         st.markdown("""
@@ -900,81 +877,62 @@ elif page == "chatbot":
             <div class="cute-bot-avatar">🤖</div>
             <div class="cute-bot-name">IDeBot</div>
             <div class="cute-bot-desc">
-                Xin chào! Em là chatbot hỗ trợ của IDeFace.
-                Em sẽ giúp anh hiểu cách dùng app, cách chọn ảnh và giải thích kết quả nhận diện.
+                Xin chào! Em là trợ lý nhỏ của IDeFace.
+                Anh hãy chọn một câu hỏi bên phải, em sẽ trả lời ngay bên dưới.
             </div>
+        </div>
+        """, unsafe_allow_html=True)
 
-            <div class="cute-suggestion">💡 Cách dùng app như thế nào?</div>
-            <div class="cute-suggestion">📷 Ảnh như thế nào thì nhận diện tốt?</div>
-            <div class="cute-suggestion">🧠 Model CNN là gì?</div>
-            <div class="cute-suggestion">📊 Độ tin cậy có ý nghĩa gì?</div>
-
-            <div class="cute-note">
-                Mẹo nhỏ: Hãy hỏi chatbot bằng các câu ngắn gọn như 
-                <b>“cách dùng app”</b>, <b>“độ tin cậy là gì”</b> hoặc 
-                <b>“vì sao nhận diện sai”</b>.
+        st.markdown("""
+        <div class="question-grid-card">
+            <div class="question-grid-title">💡 Gợi ý</div>
+            <div class="question-grid-text">
+                Các câu hỏi được thiết kế sẵn để người dùng dễ thao tác,
+                không cần nhập nội dung thủ công.
             </div>
         </div>
         """, unsafe_allow_html=True)
 
     with right:
         st.markdown("""
-        <div class="chat-panel">
-            <div class="chat-header">
-                <div class="chat-header-title">💬 Trò chuyện với IDeBot</div>
-                <div class="chat-header-sub">Trợ lý hỗ trợ sử dụng app nhận diện khuôn mặt</div>
+        <div class="qa-panel">
+            <div class="qa-title">💬 Chọn câu hỏi nhanh</div>
+            <div class="qa-subtitle">
+                Bấm vào một câu hỏi bên dưới để xem câu trả lời từ IDeBot.
             </div>
+        </div>
         """, unsafe_allow_html=True)
 
-        if "chat_messages" not in st.session_state:
-            st.session_state.chat_messages = [
-                {
-                    "role": "bot",
-                    "content": "Xin chào anh! Em là **IDeBot** 🤖. Anh muốn hỏi gì về app IDeFace?"
-                }
-            ]
+        q1, q2 = st.columns(2)
 
-        st.markdown('<div class="chat-window">', unsafe_allow_html=True)
+        with q1:
+            if st.button("💡 Cách dùng app"):
+                st.session_state.selected_question = "use_app"
 
-        for message in st.session_state.chat_messages:
-            if message["role"] == "user":
-                st.markdown(
-                    f'<div class="user-bubble">{message["content"]}</div>',
-                    unsafe_allow_html=True
-                )
-            else:
-                st.markdown(
-                    f'<div class="bot-bubble">🤖 {message["content"]}</div>',
-                    unsafe_allow_html=True
-                )
+            if st.button("📷 Ảnh nhận diện tốt"):
+                st.session_state.selected_question = "good_image"
 
-        st.markdown('</div>', unsafe_allow_html=True)
+            if st.button("🧠 Model CNN là gì?"):
+                st.session_state.selected_question = "cnn_model"
 
-        user_input = st.chat_input("Nhập câu hỏi của anh tại đây...")
+        with q2:
+            if st.button("📊 Độ tin cậy là gì?"):
+                st.session_state.selected_question = "confidence"
 
-        if user_input:
-            st.session_state.chat_messages.append(
-                {"role": "user", "content": user_input}
-            )
+            if st.button("⚠️ Vì sao nhận diện sai?"):
+                st.session_state.selected_question = "wrong_result"
 
-            bot_answer = chatbot_reply(user_input)
+            if st.button("👥 App nhận diện bao nhiêu sinh viên?"):
+                st.session_state.selected_question = "student_count"
 
-            st.session_state.chat_messages.append(
-                {"role": "bot", "content": bot_answer}
-            )
+        answer = get_default_answer(st.session_state.selected_question)
 
-            st.rerun()
-
-        if st.button("🧹 Xóa đoạn chat"):
-            st.session_state.chat_messages = [
-                {
-                    "role": "bot",
-                    "content": "Đoạn chat đã được làm mới. Anh cần em hỗ trợ gì tiếp theo?"
-                }
-            ]
-            st.rerun()
-
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="answer-box">
+            <div class="answer-title">🤖 {answer["title"]}</div>
+            <div class="answer-text">{answer["text"]}</div>
+        </div>
+        """, unsafe_allow_html=True)
 
 # =========================
 # TRANG ABOUT
