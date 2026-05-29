@@ -348,9 +348,6 @@ st.markdown("""
         font-size: 15px;
     }
 
-    /* =========================
-       CHATBOT DỄ THƯƠNG - DẠNG NÚT HỎI ĐÁP
-    ========================= */
     .cute-bot-card {
         padding: 28px;
         border-radius: 30px;
@@ -782,13 +779,10 @@ elif page == "detect":
         col_img, col_result = st.columns([1, 1])
 
         with col_img:
-            st.markdown('<div class="card">', unsafe_allow_html=True)
             st.subheader("Ảnh đầu vào")
             st.image(image, use_container_width=True)
-            st.markdown('</div>', unsafe_allow_html=True)
 
         with col_result:
-            st.markdown('<div class="card">', unsafe_allow_html=True)
             st.subheader("Kết quả dự đoán")
 
             if st.button("🔍 Bắt đầu nhận diện"):
@@ -821,8 +815,6 @@ elif page == "detect":
 
             else:
                 st.info("Bấm nút **Bắt đầu nhận diện** để hệ thống dự đoán.")
-
-            st.markdown('</div>', unsafe_allow_html=True)
 
     else:
         c1, c2 = st.columns([1, 1])
